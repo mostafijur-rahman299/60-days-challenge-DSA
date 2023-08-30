@@ -7,9 +7,10 @@ class LinkedNode:
 class LinkedList:
     def __init__(self):
         self.head = None
-        
-    def print_item(self):
-        current = self.head
+    
+    @staticmethod
+    def print_item(head):
+        current = head
         while current:
             print(current.val)
             current = current.next
@@ -25,21 +26,21 @@ class LinkedList:
         node.next = temp_head
         
     def mergeTwoLists(self, list1, list2):
+        if not list1 and not list2:
+            return list1
+        if not list1 or not list2:
+            return list1 if not list2 else list2
         
-        current1 = list1
+        seek, target = (list1, list2) if list1.val < list2.val else (list2, list1)
+        head = seek
         
-        while current1:
-            current2 = list2
-            
-            while current2:
-                if current1.val < current2.val:
-                    
-                elif current1.val >= current2.val and current1.next and current1.next.val < current2.val:
-                    pass
-                elif not current1.next:
-                    pass
-                else:
-                    break
+        while seek and target:
+            while seek.next and seek.next.val < target.val:
+                seek = seek.next
+            seek.next, target = target, seek.next
+            seek = seek.next
+        return head
+                
         
         
         
@@ -51,11 +52,21 @@ link_list_1.insert_item(4)
 link_list_1.insert_item(2)
 link_list_1.insert_item(1)
 
-link_list_1.print_item()
+LinkedList.print_item(link_list_1.head)
+
+print("======================")
 
 link_list2 = LinkedList()
-link_list2.insert_item(4)
-link_list2.insert_item(3)
-link_list2.insert_item(1)
+link_list2.insert_item(40)
+link_list2.insert_item(30)
+link_list2.insert_item(2)
 
-link_list2.print_item()
+LinkedList.print_item(link_list2.head)
+
+print("======================")
+
+merge_head = link_list_1.mergeTwoLists(link_list_1.head, link_list2.head)
+
+LinkedList.print_item(merge_head)
+
+print("======================")

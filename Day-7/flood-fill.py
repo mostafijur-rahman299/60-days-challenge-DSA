@@ -1,3 +1,5 @@
+from typing import List
+
 class Solution:
     def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
         start_color = image[sr][sc]
@@ -15,6 +17,6 @@ class Solution:
             flood_fill(i+1, j)
             flood_fill(i, j+1)
             
-        flood_fill(sc, rc)
+        flood_fill(sr, sc)
         return image
     

@@ -1,21 +1,19 @@
 import math
 
-points = [[3,3],[5,-1],[-2,4]]
+points = [[1,3],[-2,2]]
 
-k = 2
+k = 1
 
 euclidean_point = []
 
 for point in points:
     euclidean_point.append(math.sqrt(abs(point[0] ** 2 + point[1] ** 2)))
     
-euclidean_points = sorted(euclidean_point)
-
+euclidean_point = sorted(enumerate(euclidean_point), key=lambda x: x[1])
 
 result = []
 
-for item in euclidean_points[:k]:
-    value_index = euclidean_point.index(item)
-    result.append(points[value_index])
-    
+for i, point in euclidean_point[:k]:
+    result.append(points[i])
+
 print(result)

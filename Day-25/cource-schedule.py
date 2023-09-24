@@ -1,30 +1,39 @@
-from collections import defaultdict, deque
-from typing import List
-
+from collections import defaultdict,deque
 class Solution:
-    def canFinish(self,numCourses:int,prerequisites:List[List[int]])->bool:
-        graph=defaultdict(list)
-        for course,prereq in prerequisites:
-            graph[prereq].append(course)
+    def canFinish(self,numCourses:int,prerequisites)->bool:
+        graph = {}
+        indegrees = {}
+        queue = []
 
+        # make a graph from list
+        for preq, course in prerequisites:
+            if preq in graph:
+                graph[preq].append(course)
+            else:
+                graph[preq] = [course]
 
-        indegrees=[0]*numCourses
-        for prereq,_ in prerequisites:
-            indegrees[prereq]+=1
-
-
-        queue=deque()
-        for courses in range(numCourses):
-            if indegrees[courses]==0:
-                queue.append(courses)
-
+        # Find indegree from adjancency list
+        for edge in prerequisites:
+            from_node, to_node = edge
+            indegrees[from_node] = 0
+            indegrees[to_node] = 0
+            
+        for edge in prerequisites:
+            _, to_node = edge
+            indegrees[to_node] += 1
+            
+        for key, value in indegrees.items():
+            if value == 0:
+                queue.append(key)
+                
         while queue:
-            courses=queue.popleft()
-            for prereq in graph[courses]:
-                indegrees[prereq]-=1
-                if indegrees[prereq]==0:
-                    queue.append(prereq)
+            node = queue.pop(0)
+            
+            if graph.get(node):
+                for neighbor in graph[node]:
+                    indegrees[neighbor] -= 1
+                    if indegrees[neighbor] == 0:
+                        queue.append(neighbor)
 
 
-        return all(indegree==0 for indegree in indegrees)                                      
-    
+        return all(val==0 for key, val in indegrees.items())                                      

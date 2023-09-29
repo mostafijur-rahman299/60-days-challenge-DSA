@@ -31,3 +31,24 @@ for index in range(len(input_data)):
 print(prefix_data)
 print(postfix_data)
 print(output_data)
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        output_data = []
+        for index in range(len(nums)):
+            if index == 0:
+                output_data.append(1)
+                continue
+                
+            output_data.append(nums[index-1]*output_data[len(output_data)-1])
+            
+        post_fix = 1
+        for index in range(len(output_data)):
+            reverse_index = len(output_data)-(index+1)
+            
+            output_data[reverse_index] = output_data[reverse_index] * post_fix
+            
+            post_fix *= nums[reverse_index]
+
+        return output_data
+    
+    

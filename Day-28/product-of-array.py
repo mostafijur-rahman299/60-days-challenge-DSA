@@ -1,13 +1,33 @@
-class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
-        n = len(nums)
-        prefix_product = 1
-        postfix_product = 1
-        result = [0]*n
-        for i in range(n):
-            result[i] = prefix_product
-            prefix_product *= nums[i]
-        for i in range(n-1,-1,-1):
-            result[i] *= postfix_product
-            postfix_product *= nums[i]
-        return result 
+input_data = [0,0]
+prefix_data = []
+postfix_data = []
+output_data = []
+
+for index in range(len(input_data)):
+    
+    reverse_index = len(input_data)-index
+    
+    if index == 0 or reverse_index == len(input_data):
+        prefix_data.append(input_data[index])
+        postfix_data.insert(0, input_data[reverse_index-1])
+        continue
+        
+    prefix_data.append(prefix_data[len(prefix_data)-1] * input_data[index])
+    postfix_data.insert(0, postfix_data[0]*input_data[reverse_index-1])
+    
+for index in range(len(input_data)):
+    prefix = 1
+    postfix = 1
+    
+    if index >= 1:
+        prefix = prefix_data[index-1]
+    if index != len(input_data) - 1:
+        postfix = postfix_data[index+1]
+        
+    output_data.append(prefix*postfix)
+    
+    
+    
+print(prefix_data)
+print(postfix_data)
+print(output_data)

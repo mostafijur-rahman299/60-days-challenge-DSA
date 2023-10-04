@@ -1,17 +1,11 @@
 intervals = [[1,4],[0,0]]
-non_intervals = []
+intervals = sorted(intervals, key=lambda x: x[0])
+ans = []
 
-non_intervals.append(intervals[0])
-
-for index in range(1, len(intervals)):
-    non_interval_last_item = non_intervals[len(non_intervals)-1]
-    if non_interval_last_item[1] >= intervals[index][0]:
-        if non_interval_last_item[1] < intervals[index][1]:
-            non_intervals[len(non_intervals)-1][1] = intervals[index][1]
-        
-        if non_interval_last_item[0] > intervals[index][0]:
-            non_intervals[len(non_intervals)-1][0] = intervals[index][0]
+for interval in intervals:
+    if not ans or ans[-1][1] < interval[0]:
+        ans.append(interval)
     else:
-        non_intervals.append(intervals[index])
-
-print(non_intervals)
+        ans[-1][1] = interval[1]
+        
+print(ans)

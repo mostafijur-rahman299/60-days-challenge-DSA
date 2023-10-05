@@ -1,31 +1,34 @@
+from collections import defaultdict
+from bisect import bisect_right
+
 class TimeMap:
 
     def __init__(self):
-        self.storage = {}
+        # key -> (time, val)
+        self.map = defaultdict(list)
 
     def set(self, key: str, value: str, timestamp: int) -> None:
-        if key not in self.storage.keys():
-            self.storage[key] = {
-                timestamp: value
-            }
-            return None
-        
-        self.storage[key][timestamp] = value
-        
+        # appending will sort by timestamp
+        # since timestamps are strictly increasing
+        # according to the problem
+        self.map[key].append((timestamp, value))
+
     def get(self, key: str, timestamp: int) -> str:
-        if key not in self.storage.keys():
+        timeseries = self.map[key]
+        
+        if not timeseries:
             return ""
         
-        if timestamp in self.storage[key].keys():
-            return self.storage[key][timestamp]
+        # this is the potential index of the first timestamp
+        # that is strictly greater than timestamp
+        idx = bisect_right(timeseries, timestamp, key=lambda o:o[0])
         
-        curr_timestamp = timestamp-1
-        while curr_timestamp:
-            if timestamp in self.storage[key].keys():
-                return self.storage[key][timestamp]
-            curr_timestamp -= 1
-            
-        return ""
+        # given timestamp is smaller than anything seen
+        if idx == 0:
+            return ""
+        
+        return timeseries[idx-1][1]
+        
         
         
         

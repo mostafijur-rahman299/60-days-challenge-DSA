@@ -7,3 +7,16 @@
 4. Finish all problem with in 25th Oct 2023.
 5. Start revision from 26th Oct 2023.
 6. Within 5 days have to complete revision.
+
+
+## Practice rules
+1. Daily do new problem and practice previous day problems also.
+2. After 3, 7, 15, 30 days have to complete old problem and practice.
+3. After solving problem.
+    1. Go through the solution and analyze more than 3 new solutions.
+    2. Go through the editorials and analyze the solution.
+    3. Make Notes
+        1. Divide into multiple steps.
+        2. Upload daily basis on LinkedIn.
+    4. Regularly upload on GitHub.
+    

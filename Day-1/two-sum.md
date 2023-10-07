@@ -35,6 +35,15 @@ s = Solution()
 s.twoSum([2,7,11,15], 17)
 ```
 
+#### Time & Space complexity analysis
+```
+Time complexity of this solution is O(N^2) where N is the number of nums.
+
+1. O(N) * O(N) = O(N^2)
+
+Space complexity of this solution is O(1).
+```
+
 ### Solution 2 (Hash Table)
 
 ```python
@@ -52,6 +61,13 @@ class Solution:
 
 s = Solution()
 s.twoSum([2,7,11,15], 17)
+```
+
+#### Time & Space complexity analysis
+```
+Time complexity of this solution is O(N) where N is the number of nums.
+
+Space complexity of this solution is O(N) where N is the number of nums.
 ```
 
 ### Solution 3 (Two pointer)
@@ -73,4 +89,12 @@ def twoSum(nums, target):
         else:
             right -= 1
     return []  # No solution found!
+```
+
+#### Time & Space complexity analysis
+#### Time & Space complexity analysis
+```
+Time complexity of this solution is O(N) where N is the number of nums.
+
+Space complexity of this solution is O(N) where N is the number of nums.
 ```

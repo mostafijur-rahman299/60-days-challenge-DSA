@@ -48,11 +48,32 @@ s.twoSum([2,7,11,15], 17)
 
 #### Time & Space complexity analysis
 ```
-Time complexity of this solution is O(N^2) where N is the number of nums.
+Time Complexity:
 
-1. O(N) * O(N) = O(N^2)
+The code uses two nested loops to iterate through the nums list:
 
-Space complexity of this solution is O(1).
+The outer loop runs from i = 0 to i = n-1, where n is the length of the nums list.
+
+The inner loop runs from j = i + 1 to j = n-1.
+
+Within the inner loop, there's a check to see if nums[i] + nums[j] equals the target. This check involves constant time operations.
+
+So, the total number of iterations in the nested loops is roughly proportional to n(n-1)/2, which is O(n^2) in the worst case. Therefore, the time complexity of this code is O(n^2), where n is the length of the nums list.
+
+Space Complexity:
+
+The space complexity primarily depends on the indices list, which stores the indices of the two numbers that sum up to the target.
+
+The indices list will contain at most two elements, as it stores the indices of the two numbers that sum up to the target.
+
+Other than the indices list, there are no additional data structures created that depend on the size of the input nums list.
+
+So, the space complexity of this code is O(1), as the amount of additional memory used does not depend on the size of the input list. The indices list has a fixed maximum size of 2.
+
+In summary:
+
+Time Complexity: O(n^2) (quadratic time complexity due to nested loops)
+Space Complexity: O(1) (constant space complexity)
 ```
 
 ### Solution 2 (Hash Table)
@@ -88,9 +109,30 @@ s.twoSum([2,7,11,15], 17)
 
 #### Time & Space complexity analysis
 ```
-Time complexity of this solution is O(N) where N is the number of nums.
+Time Complexity:
 
-Space complexity of this solution is O(N) where N is the number of nums.
+The code uses a single pass through the nums list to find the pair of numbers that sum up to the target:
+
+The for loop iterates through the nums list once, from index 0 to n-1, where n is the length of the nums list.
+Inside the loop:
+
+The calculation of the complement (i.e., target - nums[i]) and the dictionary look-up (i.e., complement in numMap and numMap[complement]) are constant-time operations.
+Therefore, the overall time complexity of this code is O(n), where n is the length of the nums list. It's a linear time complexity because the number of operations scales linearly with the size of the input list.
+
+Space Complexity:
+
+The space complexity depends on the additional data structures used in the code:
+
+numMap: This dictionary stores the numbers from the nums list as keys and their corresponding indices as values. In the worst case, it can store all n unique numbers from the nums list. Therefore, the space complexity for numMap is O(n) in the worst case.
+
+The list returned, [numMap[complement], i], also has a space complexity of O(2) or O(1), as it contains a fixed number of elements (two elements).
+
+The dominant factor in space complexity is the numMap dictionary, so the overall space complexity of this code is O(n) in the worst case, where n is the length of the nums list.
+
+In summary:
+
+Time Complexity: O(n) (linear time complexity)
+Space Complexity: O(n) (linear space complexity)
 ```
 
 ### Solution 3 (Two pointer)
@@ -134,7 +176,26 @@ def twoSum(nums, target):
 
 #### Time & Space complexity analysis
 ```
-Time complexity of this solution is O(N) where N is the number of nums.
+Time Complexity:
 
-Space complexity of this solution is O(N) where N is the number of nums.
+Building the numsIndex list: The code starts by creating a list of tuples (num, i) where num is the value from the nums list, and i is its index using a list comprehension. This step has a time complexity of O(n) because it iterates through the entire nums list.
+
+Sorting the numsIndex list: The numsIndex list is sorted using the .sort() method. Sorting a list of n elements typically has a time complexity of O(n*log(n)).
+
+The while loop: The main work is done within the while loop, which continues as long as left < right. Inside the loop, there are no nested loops or additional significant operations that depend on the size of the input, except for the constant-time comparisons and updates.
+
+Overall, the dominant factor affecting the time complexity is the sorting step, which has a time complexity of O(nlog(n)). Therefore, the overall time complexity of this code is O(nlog(n)), where n is the length of the nums list.
+
+Space Complexity:
+
+numsIndex list: This list is created to store tuples, but it does not significantly contribute to the space complexity since it only contains references to the original elements in the nums list. The space complexity for this list is O(n).
+
+Other than the numsIndex list, there are no additional data structures created that depend on the size of the input nums list.
+
+So, the overall space complexity of this code is O(n) due to the numsIndex list.
+
+In summary:
+
+Time Complexity: O(n*log(n)) (due to the sorting step)
+Space Complexity: O(n) (linear space complexity)
 ```

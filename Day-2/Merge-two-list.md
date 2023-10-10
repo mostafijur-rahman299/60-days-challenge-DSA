@@ -111,6 +111,11 @@ print("======================")
 ```
 ### Time & Space Complexity (01 solution)
 ```
+1. The while loop that iterates through the linked lists will run until both list1 and list2 are 
+    completely merged. In the worst case, it will run until the end of the longer of the two lists.
+2. Inside the while loop, there are constant time operations, such as comparisons and assignments.
+
+The time complexity of this code is O(max(N, M)), where N is the length of list1 and M is the length of list2. This is because need to traverse both lists once to merge them.
 ```
 
 ### Time & Space Complexity (02 solution)

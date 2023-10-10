@@ -66,9 +66,6 @@ class LinkedList:
                 cur.next = list1
                 cur = list1
                 list1 = list1.next
-                
-#                 print("list1===", list1.val)
-#                 print("cur====", cur.val)
             else:
                 cur.next = list2
                 cur = list2
@@ -111,13 +108,26 @@ print("======================")
 ```
 ### Time & Space Complexity (01 solution)
 ```
-1. The while loop that iterates through the linked lists will run until both list1 and list2 are 
-    completely merged. In the worst case, it will run until the end of the longer of the two lists.
-2. Inside the while loop, there are constant time operations, such as comparisons and assignments.
+*Time complexity*:
+    1. The while loop that iterates through the linked lists will run until both list1 and list2 are 
+        completely merged. In the worst case, it will run until the end of the longer of the two lists.
+    2. Inside the while loop, there are constant time operations, such as comparisons and assignments.
 
-The time complexity of this code is O(max(N, M)), where N is the length of list1 and M is the length of list2. This is because need to traverse both lists once to merge them.
+    The time complexity of this code is O(max(N, M)), where N is the length of list1 and M is the length of list2. This is because need to traverse both lists once to merge them.
+
+*Space complexity*:
+    * The space complexity of the code is O(1), which means it uses a constant time amount of additional memory regardless of the input list sizes. This is because the code modifies the
+    input linked lists in place and does not create any new data structures that depend on the
+    size. It only uses a few variables (see, target, head) that do not depend on the input size.
 ```
 
 ### Time & Space Complexity (02 solution)
 ```
+*Time complexity*:
+    1. The time complexity of the code is O(N + M), where N is the length of list1 and M is the length of list2. In the while loop, you iterate through both lists exactly once, comparing 
+    and merging elements in sorted manner. Since each element from both lists is examined once, 
+    the time complexity of the code is linear with respect to the combined length of the two lists.
+
+*Space Complexity*:
+    The space complexity of this code is O(1), which means it uses a constant amount of additional memory. This is because it does not create any new data structures or allocate additional memory that depends on the input size. It uses a few variables (cur, dummy) to manage the linked list traversal, but the number of these variables remains constant, regardless of the input size. The merging is done in-place, so there are no new data structures created.
 ```

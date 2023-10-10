@@ -113,7 +113,7 @@ print("======================")
         completely merged. In the worst case, it will run until the end of the longer of the two lists.
     2. Inside the while loop, there are constant time operations, such as comparisons and assignments.
 
-    The time complexity of this code is O(max(N, M)), where N is the length of list1 and M is the length of list2. This is because need to traverse both lists once to merge them.
+    The time complexity of this code is O(N + M), where N is the length of list1 and M is the length of list2. This is because need to traverse both lists once to merge them.
 
 *Space complexity*:
     * The space complexity of the code is O(1), which means it uses a constant time amount of additional memory regardless of the input list sizes. This is because the code modifies the

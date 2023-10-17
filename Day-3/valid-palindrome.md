@@ -7,7 +7,7 @@ Alphanumeric characters include letters and numbers.
 Given a string s, return true if it is a palindrome, or false otherwise.
 ```
 
-### Solution 01
+### Solution 01 (Two Pointer)
 ```python
 class Solution:
     def isPalindrome(self, s: str) -> bool:
@@ -47,5 +47,37 @@ Space Complexity:
 
     The code uses a constant amount of additional space. The space complexity is O(1) because it doesn't use 
     any data structures that grow with the input size. It only uses a few variables (l, r) to keep track of positions in the string.
+```
+
+### Solution 02 (Regex pattern)
+```python
+import re
+
+string = "A man, a plan, a canal: Panama"
+cleaned_string = re.sub(r'[^A-Za-z0-9]', '', string).lower()
+
+print(cleaned_string == cleaned_string[::-1])
+```
+
+#### Time & Space Complexity Analysis
+```
+Time Complexity:
+
+    The code uses the re.sub() function to remove non-alphanumeric characters from the input string. 
+    This function has a time complexity proportional to the size of the input string, which is O(n), 
+    where n is the length of the input string.
+    After cleaning the string, the code checks if the cleaned string is equal to its reverse, 
+    which involves creating a reversed version of the string using slicing (cleaned_string[::-1]). 
+    The slicing operation takes O(n) time.
+    The comparison (cleaned_string == cleaned_string[::-1]) also takes O(n) time because it involves 
+    comparing each character of the two strings.
+    So, the overall time complexity of the code is O(n), where n is the length of the input string.
+
+Space Complexity:
+
+    The code creates a cleaned_string variable to store the cleaned and lowercase string. 
+    The space used by this variable is O(n), as it's based on the size of the input string.
+    Apart from that, the code uses a constant amount of additional space for variables, 
+    so the space complexity is O(n) + O(1) = O(n).
 ```
 

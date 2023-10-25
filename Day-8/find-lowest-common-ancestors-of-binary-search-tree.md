@@ -61,3 +61,18 @@ def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -
         return root
     return lowest_common_anchestor(root)
 ```
+
+#### Time & Space Complexity Analysis
+```
+Time Complexity:
+    The time complexity of this code is O(h), where "h" is the height of the BST. 
+    In the worst case, if the tree is completely unbalanced (essentially a linked list), 
+    the height of the tree is O(n), where "n" is the number of nodes in the tree. In the best case, 
+    when the tree is balanced, the height is O(log n) for a tree with "n" nodes.
+
+Space Complexity:
+    The space complexity of this code is O(h), where "h" is the height of the BST, 
+    and it is determined by the maximum depth of the recursion stack. In the worst case, 
+    with an unbalanced tree, the space complexity is O(n), where "n" is the number of nodes. 
+    In the best case with a balanced tree, the space complexity is O(log n).
+```

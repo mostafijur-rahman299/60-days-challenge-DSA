@@ -44,7 +44,6 @@ if len(b) < len(a):
     
 
 def b_sum(num1, num2, carry):
-    print(num1, num2, carry)
     summ = '0'
     if num1 == '1' and num2 == '1':
         summ = '10'
@@ -61,9 +60,7 @@ def b_sum(num1, num2, carry):
 
 for i in range(len(b)-1, -1, -1):
     summ = b_sum(a[i], b[i], carry)
-    
-    print("sum===", summ)
-    
+        
     if summ == '1':
         res = summ + res
         carry = '0'
